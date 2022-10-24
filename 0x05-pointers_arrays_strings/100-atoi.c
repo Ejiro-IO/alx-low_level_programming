@@ -6,6 +6,7 @@
  * @s: pointer to a character string
  *
  * Return: void
+ *
  */
 
 int _atoi(char *s)
