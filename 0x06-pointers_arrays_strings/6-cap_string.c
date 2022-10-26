@@ -1,36 +1,43 @@
 #include "main.h"
+#define MAX 100
 
 /**
  * cap_string - function that capitalizes all words of a string
- * @str: the string to be capitalized
+ * @s: the string to be capitalized
  *
  * Return: a pointer to the changed string
  */
 
-char *cap_string(char *str)
+char *cap_string(char *s)
 {
-	int index = 0;
+	char str[MAX] = {0};
+	int index;
 
-	while (!(str[index] >= 'a' && str[index] <= 'z'))
+	for (index = 0; str[index] != '\0'; index++)
+	{
 		index++;
 
-	if (str[index - 1] == ' ' ||
-	    str[index - 1] == '\t' ||
-	    str[index - 1] == '\n' ||
-	    str[index - 1] == ',' ||
-	    str[index - 1] == ';' ||
-	    str[index - 1] == '.' ||
-	    str[index - 1] == '!' ||
-	    str[index - 1] == '?' ||
-	    str[index - 1] == '"' ||
-	    str[index - 1] == '(' ||
-	    str[index - 1] == ')' ||
-	    str[index - 1] == '{' ||
-	    str[index - 1] == '}' ||
-	    index == 0)
-		str[index] -= 32;
+		if (index == 0)
+		{
+		if (str[index] >= 'a' && str[index] <= 'z')
+			str[index] = str[index] - 32;
+		continue;
+		}
+		if (str[index] == ' ')
+		{
+			++index;
 
-	index++;
-
-	return (str);
+			if (str[index] >= 'a' && str[index] <= 'z')
+			{
+				str[index] = str[index] - 32;
+				continue;
+			}
+		}
+		else
+		{
+			if (str[index] >= 'A' && str[index] <= 'Z')
+				str[index] = str[index] + 32;
+		}
+	}
+	return (s);
 }
