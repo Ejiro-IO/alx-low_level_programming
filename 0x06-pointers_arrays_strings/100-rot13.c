@@ -10,7 +10,7 @@
 
 char *rot13(char *str)
 {
-	int count = 0, i1, i2;
+	int count = 0, i;
 	char alphabet[52] = {'a', 'b', 'c', 'd', 'e', 'f',
 		'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
 		'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
@@ -24,16 +24,17 @@ char *rot13(char *str)
 		'V', 'W', 'X', 'Y', 'Z', 'A', 'B', 'C', 'D',
 		'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'};
 
-	while (str[i1])
+	while (*(str + count) != '\0')
 	{
-		for (i2 = 0; i2 < 52; i2++)
+		for (i = 0; i < 52; i++)
 		{
-			if (str[i1] == alphabet[i2])
+			if (*(str + count) == alphabet[i])
 			{
-				str[i1] == rot13[i2];
+				*(str + count) = rot13[i];
+				break;
 			}
 		}
-		i1++;
+		count++;
 	}
 	return (str);
 }
